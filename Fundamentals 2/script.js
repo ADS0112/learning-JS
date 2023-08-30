@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 // function logger() {
 //   console.log('hey');
@@ -175,14 +175,12 @@
 
 //continue and breeak
 
-
 // const stuff = [2019, 'hey', 1990, 'yo'];
 // for (let i = 0; i < stuff.length; i++) {
 //   if (typeof stuff[i] !== 'string')
 //   continue;
 // console.log(stuff[i], typeof stuff[i])
 // }
-
 
 //Looping backwards through an array
 // const jonas = [
@@ -207,7 +205,6 @@
 
 //While loop - any condition can be in the while loop
 
-
 // let i = 1
 // while(i <= 10) {
 //   console.log(`Excercise ${i}`);
@@ -218,13 +215,13 @@
 // console.log(dice)
 
 // while(dice !== 6) {
-//   console.log(`You rolled ${dice}`);  
+//   console.log(`You rolled ${dice}`);
 //   dice = Math.trunc(Math.random() * 6) + 1;
 // }
 
 const calcTip = function (bill) {
   return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
-}
+};
 
 /* Write your code below. Good luck! 🙂 */
 
@@ -233,14 +230,12 @@ const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
 const tips = [];
 const totals = [];
 
-
 for (let i = 0; i < bills.length; i++) {
-    const tip = calcTip(bills[i])
-    tips.push(tip);
-    const total = bills[i] + tip;
-    totals.push(total);
+  const tip = calcTip(bills[i]);
+  tips.push(tip);
+  const total = bills[i] + tip;
+  totals.push(total);
 }
-
 
 console.log(tips);
 console.log(totals);
