@@ -160,3 +160,98 @@
 // }
 
 // console.log(result());
+
+//LOOPS
+
+// const years = [2019, 2020, 1990, 1995];
+
+// const ages = [];
+
+// for (let i = 0; i < years.length; i++) {
+//   ages.push(2037 - years[i]);
+// }
+
+// console.log(ages);
+
+//continue and breeak
+
+
+// const stuff = [2019, 'hey', 1990, 'yo'];
+// for (let i = 0; i < stuff.length; i++) {
+//   if (typeof stuff[i] !== 'string')
+//   continue;
+// console.log(stuff[i], typeof stuff[i])
+// }
+
+
+//Looping backwards through an array
+// const jonas = [
+//   'Jonas',
+//   'Schmedtmann',
+//   2037 - 1991,
+//   'teacher',
+//   ['Michael', 'Peter', 'Steven']
+// ];
+
+// for (let i = jonas.length - 1; i >= 0; i--) {
+//   console.log(jonas[i]);
+// }
+
+//loops within loops
+
+// for (let i = 1; i <= 3; i++) {
+//   console.log(`Excercise ${i}`);
+//   for (let j = 1; j <= 5; j++)
+//   console.log(`Lifting weight: reps ${j}`);
+// }
+
+//While loop - any condition can be in the while loop
+
+
+// let i = 1
+// while(i <= 10) {
+//   console.log(`Excercise ${i}`);
+//   i++
+// }
+
+// let dice = Math.trunc(Math.random() * 6) + 1;
+// console.log(dice)
+
+// while(dice !== 6) {
+//   console.log(`You rolled ${dice}`);  
+//   dice = Math.trunc(Math.random() * 6) + 1;
+// }
+
+const calcTip = function (bill) {
+  return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+}
+
+/* Write your code below. Good luck! 🙂 */
+
+const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+
+const tips = [];
+const totals = [];
+
+
+for (let i = 0; i < bills.length; i++) {
+    const tip = calcTip(bills[i])
+    tips.push(tip);
+    const total = bills[i] + tip;
+    totals.push(total);
+}
+
+
+console.log(tips);
+console.log(totals);
+
+function calcAverage(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    // sum = sum + arr[i];
+    sum += arr[i];
+  }
+  return sum / arr.length;
+}
+
+console.log(calcAverage(totals));
