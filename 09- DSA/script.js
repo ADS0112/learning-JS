@@ -39,3 +39,14 @@ console.log(main, secdonary);
 //Return 2 values from a function
 const [starter, mainCourse] = restaurant.order(1, 2);
 console.log(starter, mainCourse);
+
+//Nested destructuring
+const nested = [1, 4, [5, 6]];
+// const [i, , j] = nested;
+//Get each value out of the array, destructure within a destructure
+const [i, , [j, k]] = nested;
+console.log(i, j, k);
+
+//Default values - set r=1 so it is not undefined
+const [p = 1, q = 1, r = 1] = [8, 9];
+console.log(p, q, r);
