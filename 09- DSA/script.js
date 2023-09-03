@@ -29,8 +29,8 @@ const restaurant = {
       close: 24,
     },
   },
-  oderDelivery: function (obj) {
-    console.log(obj);
+  oderDelivery: function ({ starter, main, address, time }) {
+    console.log(starter, main, address, time);
   },
 };
 restaurant.oderDelivery({
