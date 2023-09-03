@@ -15,21 +15,30 @@ const restaurant = {
     return [this.starterMenu[starter], this.mainMenu[main]];
   },
 
-  //   openingHours: {
-  //     thu: {
-  //       open: 12,
-  //       close: 22,
-  //     },
-  //     fri: {
-  //       open: 11,
-  //       close: 23,
-  //     },
-  //     sat: {
-  //       open: 0, // Open 24 hours
-  //       close: 24,
-  //     },
-  //   },
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  },
+  oderDelivery: function (obj) {
+    console.log(obj);
+  },
 };
+restaurant.oderDelivery({
+  time: '23',
+  address: '11 yo ave',
+  main: 2,
+  starter: 1,
+});
 
 // Switching variables with destructuring
 let [main, , secdonary] = restaurant.categories;
@@ -50,3 +59,27 @@ console.log(i, j, k);
 //Default values - set r=1 so it is not undefined
 const [p = 1, q = 1, r = 1] = [8, 9];
 console.log(p, q, r);
+
+//Destructuring objects
+
+const { name, openingHours, categories } = restaurant;
+//Changing original variable names with property name: (desired variable name)
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+
+//Mutating varibles
+let a = 11;
+let b = 22;
+const obj = { a: 23, b: 9 };
+({ a, b } = obj);
+console.log(a, b);
+
+//Nested Objects
+const {
+  fri: { open, close },
+} = openingHours;
+
+console.log(open, close);
