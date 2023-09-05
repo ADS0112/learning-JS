@@ -471,3 +471,55 @@ const restaurant = {
 //   const half = min <= 45 ? 'FIRST' : 'SECOND';
 //   console.log(`[${half} HALF] ${min}: ${event}`);
 // }
+
+
+// WORKING WITH STRINGS
+//Can get length of string with .length property,even like 'hey'.length
+ 
+const str = 'hey you there';
+console.log(str.indexOf('e'));
+console.log(str.lastIndexOf('e'));
+
+function checkMiddleSeat (seat) {
+const s = seat.slice(-1)
+
+
+}
+checkMiddleSeat('11B');
+checkMiddleSeat('11C');
+checkMiddleSeat('12B');
+
+//Comparing emails
+ const check = ' lol ';
+ const check2 = 'LOl';
+
+ const check3 = check.trim();
+ console.log(check3);
+
+ // Can use .replace as wel, replaces letters and whole string 
+
+//Split method for string and join method 
+
+
+console.log('juice bar'.split(' '));
+
+
+const [name, type] = 'juice bar'.split(' ');
+console.log(name, type);
+
+const newName = ['Fantastic', name, type].join(' ');
+console.log(newName)
+
+//How to capitalize first letter of each name
+
+function capitalizeName (name) {
+  const names = name.split(' ');
+  const namesUpper = [];
+
+  for (const n of names) {
+    namesUpper.push(n[0].toUpperCase() + n.slice(1));
+  }
+  console.log(namesUpper.join(' '));
+}
+capitalizeName('howard and fork smith');
+capitalizeName('joe jam');
