@@ -1,8 +1,6 @@
 'use strict';
 
 // Data needed for a later exercise
-const flights =
-  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 const openingHours = {
   thu: {
@@ -472,54 +470,95 @@ const restaurant = {
 //   console.log(`[${half} HALF] ${min}: ${event}`);
 // }
 
-
 // WORKING WITH STRINGS
 //Can get length of string with .length property,even like 'hey'.length
- 
-const str = 'hey you there';
-console.log(str.indexOf('e'));
-console.log(str.lastIndexOf('e'));
 
-function checkMiddleSeat (seat) {
-const s = seat.slice(-1)
+// const str = 'hey you there';
+// console.log(str.indexOf('e'));
+// console.log(str.lastIndexOf('e'));
 
+// function checkMiddleSeat(seat) {
+//   const s = seat.slice(-1);
+// }
+// checkMiddleSeat('11B');
+// checkMiddleSeat('11C');
+// checkMiddleSeat('12B');
 
-}
-checkMiddleSeat('11B');
-checkMiddleSeat('11C');
-checkMiddleSeat('12B');
+// //Comparing emails
+// const check = ' lol ';
+// const check2 = 'LOl';
 
-//Comparing emails
- const check = ' lol ';
- const check2 = 'LOl';
+// const check3 = check.trim();
+// console.log(check3);
 
- const check3 = check.trim();
- console.log(check3);
+// // Can use .replace as wel, replaces letters and whole string
 
- // Can use .replace as wel, replaces letters and whole string 
+// //Split method for string and join method
 
-//Split method for string and join method 
+// console.log('juice bar'.split(' '));
 
+// const [name, type] = 'juice bar'.split(' ');
+// console.log(name, type);
 
-console.log('juice bar'.split(' '));
+// const newName = ['Fantastic', name, type].join(' ');
+// console.log(newName);
 
+// //How to capitalize first letter of each name
 
-const [name, type] = 'juice bar'.split(' ');
-console.log(name, type);
+// function capitalizeName(name) {
+//   const names = name.split(' ');
+//   const namesUpper = [];
 
-const newName = ['Fantastic', name, type].join(' ');
-console.log(newName)
+//   for (const n of names) {
+//     namesUpper.push(n[0].toUpperCase() + n.slice(1));
+//   }
+//   console.log(namesUpper.join(' '));
+// }
+// capitalizeName('howard and fork smith');
+// capitalizeName('joe jam');
 
-//How to capitalize first letter of each name
+// //Padding a string
 
-function capitalizeName (name) {
-  const names = name.split(' ');
-  const namesUpper = [];
+// const message = 'go to gate 23';
+// console.log(message.padStart(23, 'h').padEnd(35, 'u'));
 
-  for (const n of names) {
-    namesUpper.push(n[0].toUpperCase() + n.slice(1));
-  }
-  console.log(namesUpper.join(' '));
-}
-capitalizeName('howard and fork smith');
-capitalizeName('joe jam');
+// //Repeat
+
+// const message2 = 'Hey yo';
+// console.log(message2.repeat(3));
+
+// //Challennge 4
+// document.body.append(document.createElement('textarea'));
+// document.body.append(document.createElement('button'));
+
+// document.querySelector('button').addEventListener('click', function () {
+//   const text = document.querySelector('textarea').value;
+//   const rows = text.split('\n');
+
+//   for (const [i, row] of rows.entries()) {
+//     const [first, second] = row.toLowerCase().trim().split('_');
+
+//     const output = `${first}${second.replace(
+//       second[0],
+//       second[0].toUpperCase()
+//     )}`;
+
+//     console.log(`${output.padEnd(20)}${'✅'.repeat(i + 1)}`);
+//   }
+// });
+
+//Last excercise
+// const flights =
+//   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+
+// const getCode = str => str.slice(0, 3).toUpperCase();
+
+// for (const flight of flights.split('+')) {
+//   const [type, from, to, time] = flight.split(';');
+//   const finalString = `${
+//     type.startsWith('_Delayed') ? '🔴' : ''
+//   }${type.replaceAll('_', ' ')} From:${getCode(from)} To:${getCode(
+//     to
+//   )} (${time.replace(':', 'h')})`.padStart(45);
+//   console.log(finalString);
+// }
