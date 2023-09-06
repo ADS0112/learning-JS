@@ -562,3 +562,4 @@ const restaurant = {
 //   )} (${time.replace(':', 'h')})`.padStart(45);
 //   console.log(finalString);
 // }
+
