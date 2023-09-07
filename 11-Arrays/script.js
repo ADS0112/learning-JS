@@ -61,6 +61,7 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -101,3 +102,43 @@ const dummy = [23, 45, 32, 67];
 console.log(dummy.at(0));
 //Getting last element
 console.log(dummy.at(-1));
+
+
+//Looping arrays forEach
+
+
+
+for (const movement of movements) {
+  if (movement > 0) {
+    console.log(`You desposited ${movement}`);
+
+  }else {
+    console.log(`You withdrew ${Math.abs(movement)}`);
+  }
+}
+
+//Same way as above but using forEach. forEach iterates over each value
+movements.forEach(function (movement, index, array) {
+  if (movement > 0) {
+    console.log(`Movement ${index}: You desposited ${movement}`);
+
+  }else {
+    console.log(`Movement ${index}: You desposited ${movement}`);
+  }
+})
+
+const currencies2 = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+
+currencies2.forEach(function(value, key, map) {
+  console.log(`${key}, ${value}`);
+})
+
+const currenciesUnique = new Set(['USD', 'EUR', 'CAD', 'CAD']);
+
+currenciesUnique.forEach(function(value, key, map) {
+  console.log(`${key}, ${value}`);
+})
