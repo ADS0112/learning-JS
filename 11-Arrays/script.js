@@ -62,83 +62,99 @@ const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
 
+const  displayMovements = function(movements) {
+movements.forEach(function(mov, i) {
+  const type = mov > 0 ? 'deposit': 'withdrawal';
+
+
+  const html = ` <div class="movements">
+  <div class="movements__row">
+    <div class="movements__type movements__type--${type}">${i + 1}</div>
+    <div class="movements__value">${mov}</div>
+  </div>`;
+
+  containerMovements.insertAdjacentHTML('afterbegin', html);  
+})
+}
+displayMovements(account1.movements);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+// ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-/////////////////////////////////////////////////
+// /////////////////////////////////////////////////
 
-let arr = ['a', 'b', 'c', 'd'];
+// let arr = ['a', 'b', 'c', 'd'];
 
-//Creates shallow copy
-console.log(arr.slice(2, 3));
+// //Creates shallow copy
+// console.log(arr.slice(2, 3));
 
-//Splice - mutates original array, removes the values you assign
-console.log(arr.splice(2));
+// //Splice - mutates original array, removes the values you assign
+// console.log(arr.splice(2));
 
-//Reverse - mutates original array
-arr = ['a', 'b', 'c', 'd'];
-let arr2 = ['s', 'e', 'f', 'g'];
-console.log(arr.reverse());
+// //Reverse - mutates original array
+// arr = ['a', 'b', 'c', 'd'];
+// let arr2 = ['s', 'e', 'f', 'g'];
+// console.log(arr.reverse());
 
-//Concat - does not mutate orginal array
+// //Concat - does not mutate orginal array
 
-const letters = arr.concat(arr2);
-console.log(letters);
+// const letters = arr.concat(arr2);
+// console.log(letters);
 
-//Join
-console.log(letters.join(' - '));
+// //Join
+// console.log(letters.join(' - '));
 
-//AT METHOD
-const dummy = [23, 45, 32, 67];
-console.log(dummy.at(0));
-//Getting last element
-console.log(dummy.at(-1));
+// //AT METHOD
+// const dummy = [23, 45, 32, 67];
+// console.log(dummy.at(0));
+// //Getting last element
+// console.log(dummy.at(-1));
 
 
 //Looping arrays forEach
 
 
 
-for (const movement of movements) {
-  if (movement > 0) {
-    console.log(`You desposited ${movement}`);
+// for (const movement of movements) {
+//   if (movement > 0) {
+//     console.log(`You desposited ${movement}`);
 
-  }else {
-    console.log(`You withdrew ${Math.abs(movement)}`);
-  }
-}
+//   }else {
+//     console.log(`You withdrew ${Math.abs(movement)}`);
+//   }
+// }
 
-//Same way as above but using forEach. forEach iterates over each value
-movements.forEach(function (movement, index, array) {
-  if (movement > 0) {
-    console.log(`Movement ${index}: You desposited ${movement}`);
+// //Same way as above but using forEach. forEach iterates over each value
+// movements.forEach(function (movement, index, array) {
+//   if (movement > 0) {
+//     console.log(`Movement ${index}: You desposited ${movement}`);
 
-  }else {
-    console.log(`Movement ${index}: You desposited ${movement}`);
-  }
-})
+//   }else {
+//     console.log(`Movement ${index}: You desposited ${movement}`);
+//   }
+// })
 
-const currencies2 = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
+// const currencies2 = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+// ]);
 
-currencies2.forEach(function(value, key, map) {
-  console.log(`${key}, ${value}`);
-})
+// currencies2.forEach(function(value, key, map) {
+//   console.log(`${key}, ${value}`);
+// })
 
-const currenciesUnique = new Set(['USD', 'EUR', 'CAD', 'CAD']);
+// const currenciesUnique = new Set(['USD', 'EUR', 'CAD', 'CAD']);
 
-currenciesUnique.forEach(function(value, key, map) {
-  console.log(`${key}, ${value}`);
-})
+// currenciesUnique.forEach(function(value, key, map) {
+//   console.log(`${key}, ${value}`);
+// })
