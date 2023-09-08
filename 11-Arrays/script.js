@@ -170,7 +170,7 @@ const checkDog = function (dogsJulia, dogsKate) {
 
   finalArray.forEach(function (final, index, array) {
     const status = final >= 3 ? 'Adult' : 'Puppy';
-    console.log(`Dog number ${index + 1} is an ${status}`);
+    console.log(`Dog number ${index + 1} is an ${status} and is ${final} years old`);
   });
 }
 
