@@ -154,3 +154,28 @@ displayMovements(account1.movements);
 // currenciesUnique.forEach(function(value, key, map) {
 //   console.log(`${key}, ${value}`);
 // })
+
+
+//Challenge 1 
+
+const checkDog = function (dogsJulia, dogsKate) {
+  const juliaCopy  = [...dogsJulia];
+  const kateCopy = [...dogsKate];
+  juliaCopy.pop();
+  juliaCopy.shift();
+  kateCopy.pop();
+  kateCopy.shift();
+
+  const finalArray = [...juliaCopy, ...kateCopy];
+
+  finalArray.forEach(function (final, index, array) {
+    const status = final >= 3 ? 'Adult' : 'Puppy';
+    console.log(`Dog number ${index + 1} is an ${status}`);
+  });
+}
+
+checkDog([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
+
+
+
+checkDog([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
