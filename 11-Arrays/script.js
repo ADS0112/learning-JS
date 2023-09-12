@@ -77,6 +77,18 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+
+const createUserNames = function(accs) {
+  accs.forEach(function(acc) {
+    acc.username = acc.owner.toLowerCase().split(' ').map(name => name[0]).join('');
+  })
+
+}
+
+createUserNames(accounts); 
+console.log(accounts  )
+
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -88,6 +100,7 @@ displayMovements(account1.movements);
 // ]);
 
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
 
 // /////////////////////////////////////////////////
 
@@ -158,23 +171,32 @@ displayMovements(account1.movements);
 
 //Challenge 1 
 
-const checkDog = function (dogsJulia, dogsKate) {
-  const juliaCopy  = [...dogsJulia];
-  const kateCopy = [...dogsKate];
-  juliaCopy.pop();
-  juliaCopy.shift();
-  kateCopy.pop();
-  kateCopy.shift();
+// const checkDog = function (dogsJulia, dogsKate) {
+//   const juliaCopy  = [...dogsJulia];
+//   const kateCopy = [...dogsKate];
+//   juliaCopy.pop();
+//   juliaCopy.shift();
+//   kateCopy.pop();
+//   kateCopy.shift();
 
-  const finalArray = [...juliaCopy, ...kateCopy];
+//   const finalArray = [...juliaCopy, ...kateCopy];
 
-  finalArray.forEach(function (final, index, array) {
-    const status = final >= 3 ? 'Adult' : 'Puppy';
-    console.log(`Dog number ${index + 1} is an ${status} and is ${final} years old`);
-  });
-}
+//   finalArray.forEach(function (final, index, array) {
+//     const status = final >= 3 ? 'Adult' : 'Puppy';
+//     console.log(`Dog number ${index + 1} is an ${status} and is ${final} years old`);
+//   });
+// }
 
-checkDog([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
+// checkDog([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
 
 
+// MAP method
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
+// const euroToUsd = 1.1;
+
+// const movementsUsd = movements.map(function(mov) {
+// return mov *= euroToUsd;
+// });
+
+// console.log(movementsUsd);
