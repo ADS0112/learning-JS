@@ -61,9 +61,13 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = '';
-  movements.forEach(function (mov, i) {
+
+  //Sort
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
+  movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
     const html = ` <div class="movements">
@@ -164,6 +168,16 @@ btnTransfer.addEventListener('click', function (e) {
   }
 });
 
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+  const loan = Number(inputLoanAmount.value);
+  if (loan > 0 && currentAccount.movements.some(mov => mov >= loan * 0.1)) {
+    currentAccount.movements.push(loan);
+    updateUI(currentAccount);
+  }
+  inputLoanAmount.value = '';
+});
+
 btnClose.addEventListener('click', function (e) {
   e.preventDefault();
 
@@ -178,6 +192,13 @@ btnClose.addEventListener('click', function (e) {
     containerApp.style.opacity = 0;
   }
   inputCloseUsername.value = inputClosePin.value = '';
+});
+
+let sorted = false;
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
 });
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -363,3 +384,90 @@ btnClose.addEventListener('click', function (e) {
 
 // const account = accounts.find(acc => acc.owner === 'Jessica Davis');
 // console.log(account);
+
+//Some and Every method
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// //Allows for us to use a condition instead of equality
+// const any = movements.some(mov => mov > 0);
+// console.log(any);
+
+//EVERY - only returns if all the elements in the callback method are true
+// const any = movements.every(mov => mov > 0);
+
+//Seperate call back - can pass deposit into true and false call back functions like some and every, and filter
+// const deposit = mov => mov > 0;
+
+//FLAT method - can join nested arrays together like this - only 1 level deep
+
+// const arr = [1, 2, [3, 4, 5], 7, 5, [2, 3]];
+// console.log(arr.flat());
+
+//Deeper levels of nesting - adding diff values of depth in flat
+// const arrDeep = [1, 2, [3, [4, 5]], 7, 5, [[2], 3]];
+// console.log(arrDeep.flat(2));
+
+//Flat
+// const totalBalance = accounts
+//   .map(acc => acc.movements)
+//   .flat()
+//   .reduce((acc, mov) => acc + mov, 0);
+
+// console.log(totalBalance);
+
+// //Flat Map - only goes one level deep
+// const totalBalance2 = accounts
+//   .flatMap(acc => acc.movements)
+//   .reduce((acc, mov) => acc + mov, 0);
+// console.log(totalBalance2);
+
+//Sorting Arrays
+
+//Mutates original ARRAY* - Sorts alphabetically
+// const owners = ['Jim', 'Rim', 'Pim', 'Aim'];
+// console.log(owners.sort());
+
+//Sort method only works on strings, so it covnerts everything to strings thats why negative values come first
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// // console.log(movements.sort());
+
+// //return < 0, A, B (keep order)
+// //reutrn > 0, B, A (switch orer)
+
+// //Ascending
+// // movements.sort((a, b) => {
+// //   if (a > b) {
+// //     return 1;
+// //   } else if (b > a) {
+// //     return -1;
+// //   }
+// // });
+// //Ascending
+// movements.sort((a, b) => a - b);
+// console.log(movements);
+
+// movements.sort((a, b) => b - a);
+
+//Creating and Filling Arrays
+
+//Creats an array of 7 empty elements
+const x = new Array(7);
+
+//Can do x.fill(1, 3, 5) - 1 is the element, 3 is what index it starts, and 5 is index it ends at, does not include that last index actually, just before
+x.fill(1); //mutates underlying array
+console.log(x);
+
+//Array from
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y);
+
+const z = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(z);
+
+labelBalance.addEventListener('click', function () {
+  const movementsUI = Array.from(
+    document.querySelectorAll('.movements__value'),
+    el => Number(el.textContent.replace('€', ''))
+  );
+  console.log(movementsUI);
+});
