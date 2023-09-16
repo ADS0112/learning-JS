@@ -451,23 +451,71 @@ btnSort.addEventListener('click', function (e) {
 //Creating and Filling Arrays
 
 //Creats an array of 7 empty elements
-const x = new Array(7);
+// const x = new Array(7);
 
-//Can do x.fill(1, 3, 5) - 1 is the element, 3 is what index it starts, and 5 is index it ends at, does not include that last index actually, just before
-x.fill(1); //mutates underlying array
-console.log(x);
+// //Can do x.fill(1, 3, 5) - 1 is the element, 3 is what index it starts, and 5 is index it ends at, does not include that last index actually, just before
+// x.fill(1); //mutates underlying array
+// console.log(x);
 
-//Array from
-const y = Array.from({ length: 7 }, () => 1);
-console.log(y);
+// //Array from
+// const y = Array.from({ length: 7 }, () => 1);
+// console.log(y);
 
-const z = Array.from({ length: 7 }, (_, i) => i + 1);
-console.log(z);
+// const z = Array.from({ length: 7 }, (_, i) => i + 1);
+// console.log(z);
 
-labelBalance.addEventListener('click', function () {
-  const movementsUI = Array.from(
-    document.querySelectorAll('.movements__value'),
-    el => Number(el.textContent.replace('€', ''))
+// labelBalance.addEventListener('click', function () {
+//   const movementsUI = Array.from(
+//     document.querySelectorAll('.movements__value'),
+//     el => Number(el.textContent.replace('€', ''))
+//   );
+//   console.log(movementsUI);
+// });
+
+///Practice
+const bankDepositSum = accounts
+  .flatMap(acc => acc.movements)
+  .filter(mov => mov > 0)
+  .reduce((acc, cur) => acc + cur, 0);
+console.log(bankDepositSum);
+
+//2.
+const numDeposit1000 = accounts
+  .flatMap(acc => acc.movements)
+  .filter(mov => mov > 1000).length;
+
+//with reduce method
+const numDeposit10002 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((count, cur) => (cur >= 1000 ? ++count : count), 0);
+console.log(numDeposit10002);
+
+//3.
+
+const sums = accounts
+  .flatMap(acc => acc.movements)
+  .reduce(
+    (sums, cur) => {
+      // cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur);
+      sums[cur > 0 ? 'deposits' : 'withdrawals'] += cur;
+      return sums;
+    },
+    { deposits: 0, withdrawals: 0 }
   );
-  console.log(movementsUI);
-});
+console.log(sums);
+
+//4. Convert title case
+
+const convertTitleCase = function (title) {
+  const exceptions = ['a', 'an', 'the', 'but', 'or', 'on', 'in', 'with', 'and'];
+
+  const titleCase = title
+    .toLowerCase()
+    .split(' ')
+    .map(word =>
+      exceptions.includes(word)
+        ? word
+        : word[0].toUpperCase() + word.slice(1).join(' ')
+    );
+  return titleCase;
+};
