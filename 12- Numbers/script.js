@@ -206,7 +206,7 @@ btnTransfer.addEventListener('click', function (e) {
 btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
 
-  const amount = Number(inputLoanAmount.value);
+  const amount = Math.floor(inputLoanAmount.value);
 
   if (
     amount > 0 &&
@@ -256,12 +256,12 @@ btnSort.addEventListener('click', function (e) {
 // LECTURES
 
 //Conversion - can use + to convert to number
-console.log(Number('23'));
-console.log(+'23');
+// console.log(Number('23'));
+// console.log(+'23');
 
-//Parsing - string has to start with a number -10 is the base
-console.log(Number.parseInt('30px', 10));
-console.log(Number.parseFloat('2.5rem', 10));
+// //Parsing - string has to start with a number -10 is the base
+// console.log(Number.parseInt('30px', 10));
+// console.log(Number.parseFloat('2.5rem', 10));
 
-//isFinite - checks if it is a real number
-console.log(Number.isFinite(30));
+// //isFinite - checks if it is a real number
+// console.log(Number.isFinite(30));
