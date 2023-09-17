@@ -473,49 +473,60 @@ btnSort.addEventListener('click', function (e) {
 // });
 
 ///Practice
-const bankDepositSum = accounts
-  .flatMap(acc => acc.movements)
-  .filter(mov => mov > 0)
-  .reduce((acc, cur) => acc + cur, 0);
-console.log(bankDepositSum);
+// const bankDepositSum = accounts
+//   .flatMap(acc => acc.movements)
+//   .filter(mov => mov > 0)
+//   .reduce((acc, cur) => acc + cur, 0);
+// console.log(bankDepositSum);
 
-//2.
-const numDeposit1000 = accounts
-  .flatMap(acc => acc.movements)
-  .filter(mov => mov > 1000).length;
+// //2.
+// const numDeposit1000 = accounts
+//   .flatMap(acc => acc.movements)
+//   .filter(mov => mov > 1000).length;
 
-//with reduce method
-const numDeposit10002 = accounts
-  .flatMap(acc => acc.movements)
-  .reduce((count, cur) => (cur >= 1000 ? ++count : count), 0);
-console.log(numDeposit10002);
+// //with reduce method
+// const numDeposit10002 = accounts
+//   .flatMap(acc => acc.movements)
+//   .reduce((count, cur) => (cur >= 1000 ? ++count : count), 0);
+// console.log(numDeposit10002);
 
-//3.
+// //3.
 
-const sums = accounts
-  .flatMap(acc => acc.movements)
-  .reduce(
-    (sums, cur) => {
-      // cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur);
-      sums[cur > 0 ? 'deposits' : 'withdrawals'] += cur;
-      return sums;
-    },
-    { deposits: 0, withdrawals: 0 }
-  );
-console.log(sums);
+// const sums = accounts
+//   .flatMap(acc => acc.movements)
+//   .reduce(
+//     (sums, cur) => {
+//       // cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur);
+//       sums[cur > 0 ? 'deposits' : 'withdrawals'] += cur;
+//       return sums;
+//     },
+//     { deposits: 0, withdrawals: 0 }
+//   );
+// console.log(sums);
 
-//4. Convert title case
+// //4. Convert title case
 
-const convertTitleCase = function (title) {
-  const exceptions = ['a', 'an', 'the', 'but', 'or', 'on', 'in', 'with', 'and'];
+// const convertTitleCase = function (title) {
+//   const exceptions = ['a', 'an', 'the', 'but', 'or', 'on', 'in', 'with', 'and'];
 
-  const titleCase = title
-    .toLowerCase()
-    .split(' ')
-    .map(word =>
-      exceptions.includes(word)
-        ? word
-        : word[0].toUpperCase() + word.slice(1).join(' ')
-    );
-  return titleCase;
-};
+//   const titleCase = title
+//     .toLowerCase()
+//     .split(' ')
+//     .map(word =>
+//       exceptions.includes(word)
+//         ? word
+//         : word[0].toUpperCase() + word.slice(1).join(' ')
+//     );
+//   return titleCase;
+// };
+
+//Challenge 4
+
+const dogs = [
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+  { weight: 32, curFood: 340, owners: ['Michael'] },
+];
+
+console.log(dogs.map(dog => dog.weight));
