@@ -276,3 +276,14 @@ btnSort.addEventListener('click', function (e) {
 //Big int
 // console.log(23023823n * 23823823n);
 //Can compare 20n with regular number  - 20n > 15
+
+//Create dates
+// const now = new Date();
+// console.log(now);
+
+// const future = new Date(2029, 1, 23, 15, 23);
+// console.log(future);
+// console.log(future.getFullYear());
+// console.log(future.getMonth());
+// console.log(future.getDate());
+// console.log(future.getDay());
