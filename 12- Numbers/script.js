@@ -175,18 +175,34 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
+
+const startLogoutTimer = function() {
+  const tick = function(){
+    const min = String(Math.trunc(time / 60)).padStart(2, 0);
+    const sec = String(time % 60).padStart(2, 0);
+    labelTimer.textContent = `${min}:${sec}`;
+   
+    //logout at zero
+    if(time === 0) {
+      clearInterval(timer);
+      labelWelcome.textContent = 'Login to Get Started';
+      containerApp.style.opacity = 0;
+    }
+    time--;
+  };
+  //Set time to 5 min
+  let time = 120;
+
+  //Call the timer every second
+  tick();
+  const timer = setInterval(tick, 1000)
+  return timer;
+  
+}
 ///////////////////////////////////////
 // Event handlers
 
-let currentAccount;
-
-//Fake login
-currentAccount = account1;
-updateUI(currentAccount);
-containerApp.style.opacity = 100;
-
-
-
+let currentAccount, timer;
 
 ///Login
 btnLogin.addEventListener('click', function (e) {
@@ -222,6 +238,10 @@ btnLogin.addEventListener('click', function (e) {
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
 
+    //Start logout timer - clear existing timer if it exists 
+    if (timer) clearInterval(timer);
+    timer = startLogoutTimer();
+
     // Update UI
     updateUI(currentAccount);
   }
@@ -250,6 +270,9 @@ btnTransfer.addEventListener('click', function (e) {
     receiverAcc.movementsDates.push(new Date().toISOString());
     // Update UI
     updateUI(currentAccount);
+    //Reset Timer
+    clearInterval(timer);
+    timer = startLogoutTimer();
   }
 });
 
@@ -260,16 +283,26 @@ btnLoan.addEventListener('click', function (e) {
 
   if (
     amount > 0 &&
-    currentAccount.movements.some((mov) => mov >= amount * 0.1)
-  ) {
-    // Add movement
+    currentAccount.movements.some((mov) => mov >= amount * 0.1)) {
+    
+      setTimeout(function(){
+        // Add movement
     currentAccount.movements.push(amount);
 
     //Loan Date
     currentAccount.movementsDates.push(new Date().toISOString());
 
+
+    
     // Update UI
     updateUI(currentAccount);
+
+    clearInterval(timer);
+    timer = startLogoutTimer();
+    
+      }, 2500);
+    
+   
   }
   inputLoanAmount.value = '';
 });
@@ -341,4 +374,13 @@ btnSort.addEventListener('click', function (e) {
 // console.log(future.getDate());
 // console.log(future.getDay());
 
-//Operations with Dates
+//Set interval and setTimeout
+
+
+//Every second this function is executed
+// setInterval(function() {
+//   const date = new Date();
+//   const hour = date.getHours();
+//   const min = date.getMinutes();
+//   console.log(hour, min);
+// }, 60000);
