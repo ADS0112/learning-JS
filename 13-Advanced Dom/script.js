@@ -105,4 +105,4 @@ document.querySelector('.nav__links').addEventListener('click', function(e){
   this.style.backgroundColor = randomColor();
   //Stop Propogration
   // e.stopPropagation();
-})
+}, true)
