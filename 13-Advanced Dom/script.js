@@ -33,7 +33,7 @@ document.addEventListener('keydown', function (e) {
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
 
-btnScrollTo.addEventListener('click',function (e){
+btnScrollTo.addEventListener('click', function (e) {
   const s1Coords = section1.getBoundingClientRect();
   console.log(s1Coords);
 
@@ -41,14 +41,12 @@ btnScrollTo.addEventListener('click',function (e){
   // window.scrollTo({
   //   left: s1Coords.left + window.scrollX,
   //   top: s1Coords.top + window.scrollY,
-  //   behavior: 'smooth', 
+  //   behavior: 'smooth',
   // });
 
-
   //Modern browsers
-  section1.scrollIntoView({behavior: 'smooth'})
+  section1.scrollIntoView({ behavior: 'smooth' });
 });
-
 
 //Page Navigation
 
@@ -57,21 +55,20 @@ btnScrollTo.addEventListener('click',function (e){
 //     e.preventDefault();
 //     const id = this.getAttribute('href');
 //     document.querySelector(id).scrollIntoView({behavior: 'smooth'})
-     
+
 //   })
 // })
 
 //1. Add event listener to common parent element
 //2. Determine what element orignated the event
-    document.querySelector('.nav__links').addEventListener('click', function(e){
-      e.preventDefault();
-    //Matching strategies
-      if(e.target.classList.contains('nav__link')) {
-            const id = e.target.getAttribute('href');
-            document.querySelector(id).scrollIntoView({behavior: 'smooth'})
-      }
-    })
-
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  e.preventDefault();
+  //Matching strategies
+  if (e.target.classList.contains('nav__link')) {
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
+});
 
 ///////LECTURE
 
@@ -79,7 +76,7 @@ btnScrollTo.addEventListener('click',function (e){
 
 // const message = document.createElement('div');
 // message.classList.add('cookie-message');
-// message.textContent = 'We use cookies'; 
+// message.textContent = 'We use cookies';
 
 // .prepend adds the elemnt as the first child of the element and .append adds it as the last child
 //Insert multiple copes of the same element
@@ -97,15 +94,13 @@ btnScrollTo.addEventListener('click',function (e){
 
 // document.documentElement.style.setProperty('--color-primary', 'orangered')
 
-//Attributes 
+//Attributes
 // const logo = document.querySelector('nav__logo');
-// //Can get default properties 
+// //Can get default properties
 // console.log(logo.alt);
 
 // //Can get custom properties
 // console.log(logo.getAttribute('custon-name'));
-
-
 
 //Events
 //Multiple types of events such as mouseeneter and onclock. There are onproperties for most events like click would be onclick
@@ -129,3 +124,23 @@ btnScrollTo.addEventListener('click',function (e){
 //   //Stop Propogration
 //   // e.stopPropagation();
 // }, true)
+
+//DOM Traversing
+
+// const h1 = document.querySelector('h1');
+
+// //Going downwards: Child
+// console.log(h1.querySelectorAll('.highlight'));
+// console.log(h1.childNodes);
+
+// //Going upwards: parents
+// console.log(h1.parentNode);
+// //cloest finds parents no matter how far up the DOM tree
+// // h1.closest('.header').style.backgroundColor = 'black';
+
+// //Going sideways: siblings
+// console.log(h1.previousElementSibling);
+// console.log(h1.nextElementSibling);
+
+// //if we want all siblingfs
+// console.log(h1.parentElement.children);
