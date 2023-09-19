@@ -30,14 +30,33 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click',function (e){
+  const s1Coords = section1.getBoundingClientRect();
+  console.log(s1Coords);
+
+  //Scrolling - supporting old browsers
+  // window.scrollTo({
+  //   left: s1Coords.left + window.scrollX,
+  //   top: s1Coords.top + window.scrollY,
+  //   behavior: 'smooth', 
+  // });
+
+
+  //Modern browsers
+  section1.scrollIntoView({behavior: 'smooth'})
+});
+
 
 ///////LECTURE
 
 //Creating and inserting elements
 
-const message = document.createElement('div');
-message.classList.add('cookie-message');
-message.textContent = 'We use cookies'; 
+// const message = document.createElement('div');
+// message.classList.add('cookie-message');
+// message.textContent = 'We use cookies'; 
 
 // .prepend adds the elemnt as the first child of the element and .append adds it as the last child
 //Insert multiple copes of the same element
@@ -63,15 +82,20 @@ message.textContent = 'We use cookies';
 // //Can get custom properties
 // console.log(logo.getAttribute('custon-name'));
 
-const btnScrollTo = document.querySelector('.btn--scroll-to');
-const section1 = document.querySelector('#section--1');
 
-btnScrollTo.addEventListener('click',function (e){
-  const s1Coords = section1.getBoundingClientRect();
-  console.log(s1Coords);
 
-  //Scrolling
-  window.scrollTo({
-    left: s1Coords.left  + window.scrollX, top: s1Coords.top + window.scrollY,
-    behaviour: 'smooth',
-  });
+//Events
+//Multiple types of events such as mouseeneter and onclock. There are onproperties for most events like click would be onclick
+
+// With addeEeventLisnter we can add removeEventListner to make it only occur once
+//Can use setTimeout as well
+
+//Bubbling and Capturing
+
+const randomInt = (min, max) => Math.floor(Math.random() * (max -min+1) + min);
+
+const randomColor = () => `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+
+document.querySelector('.nav__link').addEventListener('click', function(){
+  this.style.backgroundColor = randomColor();
+})
