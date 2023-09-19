@@ -50,6 +50,18 @@ btnScrollTo.addEventListener('click',function (e){
 });
 
 
+//Page Navigation
+
+document.querySelectorAll('.nav__link').forEach(function(el) {
+  el.addEventListener('click', function(e){
+    e.preventDefault();
+    const id = this.getAttribute('href');
+    document.querySelector(id).scrollIntoView({behavior: 'smooth'})
+     
+  })
+})
+
+
 ///////LECTURE
 
 //Creating and inserting elements
@@ -92,17 +104,17 @@ btnScrollTo.addEventListener('click',function (e){
 
 //Bubbling and Capturing
 
-const randomInt = (min, max) => Math.floor(Math.random() * (max -min+1) + min);
+// const randomInt = (min, max) => Math.floor(Math.random() * (max -min+1) + min);
 
-const randomColor = () => `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+// const randomColor = () => `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
 
-document.querySelector('.nav__link').addEventListener('click', function(e){
-  this.style.backgroundColor = randomColor();
-  //Stop Propogration
-  // e.stopPropagation();
-})
-document.querySelector('.nav__links').addEventListener('click', function(e){
-  this.style.backgroundColor = randomColor();
-  //Stop Propogration
-  // e.stopPropagation();
-}, true)
+// document.querySelector('.nav__link').addEventListener('click', function(e){
+//   this.style.backgroundColor = randomColor();
+//   //Stop Propogration
+//   // e.stopPropagation();
+// })
+// document.querySelector('.nav__links').addEventListener('click', function(e){
+//   this.style.backgroundColor = randomColor();
+//   //Stop Propogration
+//   // e.stopPropagation();
+// }, true)
