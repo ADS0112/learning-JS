@@ -70,7 +70,33 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   }
 });
 
-///////LECTURE
+//Tabbed Components
+
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+tabsContainer.addEventListener('click', function (e) {
+  e.preventDefault();
+  const clicked = e.target.closest('.operations__tab');
+  console.log(clicked);
+  //Guard Clause
+  if (!clicked) return;
+
+  //Remove active Tab
+  tabs.forEach(t => t.classList.remove('operations__tab--active'));
+  //Active Tab
+  clicked.classList.add('operations__tab--active');
+
+  //Remoave active content area
+  tabsContent.forEach(c => c.classList.remove('operations__content--active'));
+  //Activate content area
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
+});
+
+///////LECTURE////////////////////////////////
 
 //Creating and inserting elements
 
