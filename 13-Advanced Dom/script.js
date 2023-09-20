@@ -153,8 +153,28 @@ const headerObs = new IntersectionObserver(stickyNav,{
 );
 headerObs.observe(header);
 
+//Reveal sections
+
+const allSections = document.querySelectorAll('.section');
+
+const revaelSection = function(entires, observer) {
+  const [entry] = entires;
+  console.log(entry)
+  if(!entry.isIntersecting) return;
+  entry.target.classList.remove('section--hidden');
+  observer.unobserve(entry.target);
+};
 
 
+const sectionObserver =  new IntersectionObserver(revaelSection, {
+  root: null,
+  threshhold: 0.15
+});
+
+allSections.forEach(section => {
+  sectionObserver.observe(section)
+  section.classList.add('section--hidden');
+})
 
 ///////LECTURE////////////////////////////////
 
