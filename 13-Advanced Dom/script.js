@@ -200,6 +200,15 @@ const imgObserver = new IntersectionObserver(loadImg, {
 });
 
 imgTargets.forEach(img => imgObserver.observe(img));
+
+
+///Sliders
+
+
+const slides = document.querySelectorAll('.slide');
+
+
+
 ///////LECTURE////////////////////////////////
 
 //Creating and inserting elements
