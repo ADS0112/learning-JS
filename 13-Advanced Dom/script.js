@@ -176,6 +176,10 @@ allSections.forEach(section => {
   section.classList.add('section--hidden');
 })
 
+//Lazy Loading 
+const imgTargets = document.querySelectorAll('img[data-src]');
+console.log(imgTargets)
+
 ///////LECTURE////////////////////////////////
 
 //Creating and inserting elements
