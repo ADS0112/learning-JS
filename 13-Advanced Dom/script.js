@@ -346,3 +346,12 @@ activateDot(0);
 
 // //if we want all siblingfs
 // console.log(h1.parentElement.children);
+
+
+//Useful event to listen for incase loss of data, askss user if they want to leave page
+// window.addEventListener('beforeunload', function (e) {
+//   e.preventDefault();
+//   console.log(e);
+//   e.returnValue = '';
+// });
+// */
