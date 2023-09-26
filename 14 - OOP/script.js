@@ -100,33 +100,33 @@
 
 //Challenege 2
 
-class Car {
-  constructor(make, speed) {
-    this.make = make;
-    this.speed = speed;
-  }
-  accelerate() {
-    this.speed += 10
-    console.log(`You are going ${this.speed}km/h`);
-  }
-  brake() {
-    this.speed += 10
-    console.log(`You are going ${this.speed}`);
-  }
+// class Car {
+//   constructor(make, speed) {
+//     this.make = make;
+//     this.speed = speed;
+//   }
+//   accelerate() {
+//     this.speed += 10
+//     console.log(`You are going ${this.speed}km/h`);
+//   }
+//   brake() {
+//     this.speed += 10
+//     console.log(`You are going ${this.speed}`);
+//   }
 
-  get speedUS() {
-    return this.speed/1.6;
-  }
-  set speedUS (speed) {
-    this.speed = speed * 1.6;
+//   get speedUS() {
+//     return this.speed/1.6;
+//   }
+//   set speedUS (speed) {
+//     this.speed = speed * 1.6;
 
-  }
-}
+//   }
+// }
 
-const ford = new Car('Ford', 120);
-console.log(ford)
-ford.accelerate();
+// const ford = new Car('Ford', 120);
+// console.log(ford)
+// ford.accelerate();
 
-console.log(ford.speedUS);
-ford.speedUS = 70;
-console.log(ford)
+// console.log(ford.speedUS);
+// ford.speedUS = 70;
+// console.log(ford)
