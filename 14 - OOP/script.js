@@ -209,31 +209,101 @@
 
 //Another class Example & Encapsulation and protecting properties
 
-class Account {
-  //Define a public field (theswe fields willbe present on all the instances that we create through the class)
-  locale = navigator.language;
-  _movements = [];
+// class Account {
+//   //Define a public field (theswe fields willbe present on all the instances that we create through the class)
+//   locale = navigator.language;
 
-  constructor(owner, currency, pin) {
-    this.owner = owner;
-    this.currency = currency;
-    this._pin = pin;
-    //Protected property using _
-    this._movements = [];
-    this.locale = navigator.language;
+//   //Prviate fields(not accessible from the outsie, with #, on instances not on the prototypes)
+//   #movements = [];
+//   #pin;
+
+//   constructor(owner, currency, pin) {
+//     this.owner = owner;
+//     this.currency = currency;
+//     this.#pin = pin;
+//     //Protected property using _
+//     this.#movements = [];
+//     this.locale = navigator.language;
+//   }
+
+//   //Makes it publicly accessible with this method - public methods
+//   getMovements() {
+//     return this.#movements;
+//   }
+//   deposit(val) {
+//     this.#movements.push(val);
+//     return this;
+//   }
+//   withdraw(val) {
+//     this.#movements.push(-val);
+//     return this;
+//   }
+// }
+
+//Static does not work on instnaces
+// static helper() {
+
+// }
+//Private Methods
+//   #approveLoan(val) {
+//     return true;
+//   }
+
+// const acc1 = new Account('Aman', 'CAD', 2222, []);
+// acc1.deposit(250);
+// acc1.withdraw(140);
+
+// //Chaining - do this by returning this keyword to the method
+// acc1.deposit(250).withdraw(500);
+
+// console.log(acc1.getMovements());
+
+//Challenge 4
+class CarCl {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
   }
 
-  //Makes it publicly accessible with this method
-  getMovements() {
-    return this._movements;
+  accelerate() {
+    this.speed += 10;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
   }
-  deposit(val) {
-    this._movements.push(val);
+
+  brake() {
+    this.speed -= 5;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+    return this;
   }
-  withdraw(val) {
-    this._movements.push(-val);
+
+  get speedUS() {
+    return this.speed / 1.6;
+  }
+
+  set speedUS(speed) {
+    this.speed = speed * 1.6;
   }
 }
-const acc1 = new Account('Aman', 'CAD', 2222, []);
-acc1.deposit(250);
-acc1.withdraw(140);
+
+class EVcl extends CarCl {
+  constructor(make, speed, charge) {
+    super(make, speed);
+    this.charge = charge;
+  }
+  chargeBattery(chargeTo) {
+    this.charge = chargeTo;
+    return this;
+  }
+  accelerate() {
+    this.speed += 20;
+    this.charge--;
+    console.log(
+      `${this.make}, is going ${this.speed}. with ${this.charge}% Battery`
+    );
+    return this;
+  }
+}
+
+const rivian = new EVcl('Rivian', 120, 23);
+
+rivian.accelerate().chargeBattery(50).brake();
