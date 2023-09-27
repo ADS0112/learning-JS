@@ -1,4 +1,3 @@
-
 'use strict';
 //Construcor functions
 
@@ -22,7 +21,6 @@
 // };
 // me.calcAge();
 
-
 //Challeneg 1
 
 // const Car = function(make, speed) {
@@ -44,13 +42,12 @@
 
 //Es6 Classes
 
-
 //Class expression
 // class PersonCl {
 // constructor(firstName, birthYear) {
 //   this.firstName = firstName;
 //   this.birthYear = birthYear;
-// } 
+// }
 
 // calcAge() {
 //   console.log(2037 - this.birthYear);
@@ -77,14 +74,11 @@
 //   }
 // }
 
-
 // //Get and Set as now read as properites instead of calling the method
 // console.log(account.latest);
 
 // account.latest = 50;
 // console.log(account.movements)
-
-
 
 //Object.crate
 
@@ -94,9 +88,7 @@
 //     }
 // }
 
-
 // const steven = object.create(PersonProto);
-
 
 //Challenege 2
 
@@ -146,45 +138,102 @@
 //   this.course = course;
 // }
 
-// //Linking prootostypes allows for instances of student to access functions of parent person class 
+// //Linking prootostypes allows for instances of student to access functions of parent person class
 // Student.prototype = Object.create(Person.prototype);
-
 
 // Student.prototype.constructor = Student;
 
 // const mike = new Student('Mike', 2020, 'CS');
 // mike.calcAge();
 
-
 //Challenege 3
-const Car = function(make, speed) {
-  this.make = make;
-  this.speed = speed;
+// const Car = function(make, speed) {
+//   this.make = make;
+//   this.speed = speed;
+// }
+
+// Car.prototype.brake = function(speed) {
+//   this.speed -= 10;
+// }
+
+// const EV = function(make, speed, charge) {
+//   Car.call(this, make, speed);
+//   this.charge = charge;
+// }
+
+// EV.prototype = Object.create(Car.prototype);
+
+// EV.prototype.chargeBattery = function(chargeTo) {
+//   this.charge = chargeTo;
+// }
+// EV.prototype.accelerate = function() {
+//   this.speed += 20;
+//   this.charge--;
+//   console.log(`${this.make}, is going ${this.speed}. with ${this.charge}% Battery`);
+// }
+
+// const tesla = new EV('Tesla', 120, 23);
+// tesla.chargeBattery(90);
+// console.log(tesla)
+// tesla.accelerate();
+
+//Classes and prototype chains
+// class PersonCl {
+//   constructor(firstName, birthYear) {
+//     this.firstName = firstName;
+//     this.birthYear = birthYear;
+//   }
+
+//   calcAge() {
+//     console.log(2037 - this.birthYear);
+//   }
+// }
+
+// class StudentCl extends PersonCl {
+//   constructor(firstName, birthYear, course) {
+//     //Always needs to happen first
+//     super(firstName, birthYear);
+//     this.course = course;
+//   }
+// }
+
+//object. create linking, parent and child
+
+// const PersonProto = {
+//   calcAge() {
+//     console.log(2037 - this.birthYear);
+//   },
+// };
+// const StudentProto = object.create(PersonProto);
+// const jay = object.create(StudentProto);
+
+//Another class Example & Encapsulation and protecting properties
+
+class Account {
+  //Define a public field (theswe fields willbe present on all the instances that we create through the class)
+  locale = navigator.language;
+  _movements = [];
+
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    this._pin = pin;
+    //Protected property using _
+    this._movements = [];
+    this.locale = navigator.language;
+  }
+
+  //Makes it publicly accessible with this method
+  getMovements() {
+    return this._movements;
+  }
+  deposit(val) {
+    this._movements.push(val);
+  }
+  withdraw(val) {
+    this._movements.push(-val);
+  }
 }
-
-
-Car.prototype.brake = function(speed) {
-  this.speed -= 10;
-}
-
-
-const EV = function(make, speed, charge) {
-  Car.call(this, make, speed);
-  this.charge = charge;
-}
-
-EV.prototype = Object.create(Car.prototype);
-
-EV.prototype.chargeBattery = function(chargeTo) {
-  this.charge = chargeTo;
-}
-EV.prototype.accelerate = function() {
-  this.speed += 20;
-  this.charge--;
-  console.log(`${this.make}, is going ${this.speed}. with ${this.charge}% Battery`);
-}
-
-const tesla = new EV('Tesla', 120, 23);
-tesla.chargeBattery(90);
-console.log(tesla)
-tesla.accelerate();
+const acc1 = new Account('Aman', 'CAD', 2222, []);
+acc1.deposit(250);
+acc1.withdraw(140);
